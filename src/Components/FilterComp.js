@@ -1,38 +1,33 @@
-import React,{  useState } from "react";
+import React, { useRef } from "react";
 import {
   Box,
-  InputLabel,
   MenuItem,
-  FormControl,
   Select,
 } from "@material-ui/core";
 
-
 const FilterComp = (props) => {
-    
-//   const [sortorder, setsortorder] = useState("");
-
-//   const handleChange = (event) => {
-//     sortorder(event.target.value);
-//     alert(event.target.value);
-//   };
-
+  const valueRef = useRef("");
   return (
-    <Box sx={{ minWidth: 50 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Sort By:</InputLabel>
-        <Select
-          labelId="Select Sort Order-label"
-          id="Select Sort Order"
-            value=""
-          label="Select Sort Order"
-          onChange={event => props.onChange(event)} 
-        >          
-          <MenuItem value={1}>Title ASC</MenuItem>
-          <MenuItem value={2}>Title Desc</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <Box
+      component="form"
+      sx={{
+        "& > :not(style)": { m: 1, width: "25ch" },
+      }}
+      noValidate
+      autoComplete="off"
+    >      
+      <Select
+        labelId="Select Sort Order-label"
+        id="Select Sort Order"
+        label="Select Sort Order"
+        value="0"
+        onChange={(event) => props.onChange(event)}
+      >
+        <MenuItem value={0}>Sort Order </MenuItem>
+        <MenuItem value={1}>Title ASC</MenuItem>
+        <MenuItem value={2}>Title Desc</MenuItem>
+      </Select>
+    </Box>   
   );
 };
 
