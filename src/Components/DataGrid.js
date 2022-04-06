@@ -8,10 +8,15 @@ import SeachFilter from "./SearchFilter";
 const DataGrid = () => {
   const [data, setdata] = useState([]);
   const [sorteddata, setSorteddata] = useState([]);
+  let from=50;
+  let itemsPerPage =80;
+  const bestUrl="http://localhost:43346/api/Data/"+from+'/' +itemsPerPage
   useEffect(() => {
-    fetch("http://localhost:43346/api/Data")
+    //let url=authCtx.backappUrl+"/"+authCtx.userId+"/"+contentType;
+    fetch(bestUrl)
       .then((data) => data.json())
       .then((data) => {
+        console.log(data);
         setdata(
           data.map((x, index) => ({
             title: x.title,
