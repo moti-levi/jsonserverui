@@ -11,8 +11,7 @@ const DataGrid = () => {
   let from=50;
   let itemsPerPage =80;
   const bestUrl="http://localhost:43346/api/Data/"+from+'/' +itemsPerPage
-  useEffect(() => {
-    //let url=authCtx.backappUrl+"/"+authCtx.userId+"/"+contentType;
+  useEffect(() => {    
     fetch(bestUrl)
       .then((data) => data.json())
       .then((data) => {
